@@ -74,3 +74,11 @@ all tables below might have an `id`, `created_at`, `updated_at` according to the
 - `DELETE /followers` : Delete the authenticated user from the followers list of the specifed user
 - `POST /subscriptions` : Add the authenticated user as a subscriber to the specified group or event
 - `DELETE /subscriptions/{id}` : Delete the subscription
+
+### Description
+
+- **Performance considerations for handling feeds** : we could use an advanced join query to retrieve user home feed, or we can go a step further and cache the feeds in the database in a way which when the post is created we determine the correponding users that we should show the post to based on the subscriptions and followers, and this feed can be saved in a separate database table (e.g., `feeds (user_id, post_id)`)
+- **File storage scalability** : we may want to use a dedicated file storage service such as aws s3 for a reliable storage solution (backup, latency, region availability)
+- For the translations we can go either the manual way and give the user the possiblity to set his post in different languages, tho this seems like a cumbersome process for the user so we might as well just rely on translation services like Google Translation or DeepL to deligate the translation process
+- We should be aware of some of the security concerns regarding file uploads, including size limits and malicious file detection and private files hosting to ensure the privacy of post's attachments.
+
