@@ -100,3 +100,17 @@ all tables below might have an `id`, `created_at`, `updated_at` according to the
 To calculate percentages (e.g., 71% of users have seen this post), count the number of unique users who viewed the post and divide by the total number of users eligible to see it.
 and when the user sees the post (either when it's loaded in the screen or being navigated to) we can send a post request to the backend to log the view, we can go a step further and cache the count percentage inside the posts table everytime the post is seen to improve the stat performance
 
+-----
+
+## How to install & use
+
+- Clone the project with `git clone` and navigate to the project directory
+- **Optional step** : Edit database credentials in `.env.example` if you have a different database name, database user and password
+- Run the setup script using `chmod +x setup.sh && ./setup.sh`
+- Launch the app using `php artisan serve` or any local setup of your choice
+- **Optional step** : You can ensure that the app is functional by running the test suits `php artisan test`
+
+---
+
+That's it. Thank you for taking the time for reviewing
+
