@@ -53,3 +53,24 @@ all tables below might have an `id`, `created_at`, `updated_at` according to the
 - **followers**
     - `follower_id` (foreign to users table)
     - `following_id` (foreign to users table)
+
+### API Routes
+
+- `POST /posts` : Create a new post
+- `GET /posts/{id}` : Retrieve a specific post
+- `PUT /posts/{id}` : Update an existing post
+- `DELETE /posts/{id}` : Delete a post
+- `POST /posts/{post_id}/comments` : Add a comment to a post
+- `DELETE /comments/{id}` : Delete a comment
+- `POST /posts/{post_id}/reactions` : Add a reaction to a post
+- `DELETE /reactions/{id}` : Delete a reaction
+- `POST /attachments` : Upload a file or link as an attachment
+- `GET /feed` : Retrieve the user’s home feed (followings & groups & events posts)
+- `GET /users/{id}/feed` : Retrieve the user profile feed
+- `GET /groups/{id}/feed` : Retrieve the group feed
+- `GET /events/{id}/feed` : Retrieve the event feed
+- `GET /link-preview` : Fetch metadata for a link
+- `POST /followers` : Add the authenticated user as a follower to the specified user
+- `DELETE /followers` : Delete the authenticated user from the followers list of the specifed user
+- `POST /subscriptions` : Add the authenticated user as a subscriber to the specified group or event
+- `DELETE /subscriptions/{id}` : Delete the subscription
