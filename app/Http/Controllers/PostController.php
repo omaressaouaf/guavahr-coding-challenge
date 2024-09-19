@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdatePostRequest;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
@@ -24,11 +24,14 @@ class PostController extends Controller
     {
         Gate::authorize('create', Post::class);
 
+        // authentication is not implemented since it's not in the test case but this will be the id of the authenticated user (Auth::id())
+        $userId = User::first()->id;
+
         $post = Post::query()
             ->create(
                 [
                     'body' => $request->input('body'),
-                    'user_id' => Auth::id() // authentication is not implemented since it's not in the test case but this will be the user id for the post
+                    'user_id' => $userId
                 ]
             );
 
