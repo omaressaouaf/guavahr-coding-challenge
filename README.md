@@ -82,3 +82,19 @@ all tables below might have an `id`, `created_at`, `updated_at` according to the
 - For the translations we can go either the manual way and give the user the possiblity to set his post in different languages, tho this seems like a cumbersome process for the user so we might as well just rely on translation services like Google Translation or DeepL to deligate the translation process
 - We should be aware of some of the security concerns regarding file uploads, including size limits and malicious file detection and private files hosting to ensure the privacy of post's attachments.
 
+### Question answers
+
+- 1 : Common features such as handling posts, comments, and reactions could be abstracted into separate services or classes for modularity. Example: `ReactionService` for managing reactions across posts and comments (if needed). `FileHandlingService` for managing attachments.`TranslationService` for handling posts and comments translation.
+
+- 2 : I would implement cursor based pagination to handle large data sets efficiently since accurate page pagination is not required, for the frontend i would use a simple infinit scrolling mechanism to fetch the next pages.
+
+- 3 : Services like Google Translate may not always offer the best accurate translation which might lead to possible misinterpretations.
+
+- 4 : I've never encounted this use case but after doing a bit of research i found couple of solutions such as OpenGraph or oEmbed that can offer metadata about a url using a simple http request, so this might be delegated to separate route to get the metadata on realtime or can be implemented as background job that fetches and stores link metadata when a link is attached to a post/comment, ensuring a quick response to the user.
+
+- 5 : I would say the tricky part about handling attachments is preventing malicious file uploads and generating thumbnails for images/videos for quick previews without loading the full file, luckily in laravel ecosystem there is a well known package `spatie/laravel-medialibrary` that can help with the latter
+
+- 6 : We can track post views by logging the post ID and user ID in a separate `views` table.
+To calculate percentages (e.g., 71% of users have seen this post), count the number of unique users who viewed the post and divide by the total number of users eligible to see it.
+and when the user sees the post (either when it's loaded in the screen or being navigated to) we can send a post request to the backend to log the view, we can go a step further and cache the count percentage inside the posts table everytime the post is seen to improve the stat performance
+
