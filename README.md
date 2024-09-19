@@ -1,4 +1,6 @@
-## GuavaHR Coding Challenge Senior Full Stack Developer application by Omar Essaouaf
+# GuavaHR Coding Challenge Senior Full Stack Developer application by Omar Essaouaf
+
+## Documentation and Planning
 
 ### Database Design
 
