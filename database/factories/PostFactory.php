@@ -17,7 +17,7 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'body' => $this->faker->paragraphs(),
+            'body' => $this->faker->paragraphs(3, true),
             'user_id' => UserFactory::new()
         ];
     }
